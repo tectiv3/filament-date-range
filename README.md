@@ -118,108 +118,125 @@ DateRangePicker::make('event_period')
 ### Customization Options
 
 #### `displayFormat(string | Closure | null $format)`
-    Sets the display format for dates in the input fields. Accepts a **PHP date format** string. Defaults to `M j, Y` (e.g., "Jan 15, 2024"). See [PHP date formats](https://www.php.net/manual/en/function.date.php).
-    ```php
-    DateRangePicker::make('booking_dates')
-        ->displayFormat('d/m/Y') // Displays as "15/01/2024"
-    ```
-    ![Input fields showing dates like "15/01/2024".](art/form-field-displayformat.png)
+
+Sets the display format for dates in the input fields. Accepts a **PHP date format** string. Defaults to `M j, Y` (e.g., "Jan 15, 2024"). See [PHP date formats](https://www.php.net/manual/en/function.date.php).
+```php
+DateRangePicker::make('booking_dates')
+    ->displayFormat('d/m/Y') // Displays as "15/01/2024"
+```
+![Input fields showing dates like "15/01/2024".](art/form-field-displayformat.png)
 
 #### `format(string | Closure $format)`
-    Sets the underlying storage format for dates (used for component state and database interaction). Accepts a **PHP date format** string. Defaults to `Y-m-d` (e.g., "2024-01-15"). See [PHP date formats](https://www.php.net/manual/en/function.date.php).
-    ```php
-    DateRangePicker::make('log_period')
-        ->format('Y-m-d H:i:s') // Stores as "2024-01-15 10:30:00"
-    ```
+
+Sets the underlying storage format for dates (used for component state and database interaction). Accepts a **PHP date format** string. Defaults to `Y-m-d` (e.g., "2024-01-15"). See [PHP date formats](https://www.php.net/manual/en/function.date.php).
+```php
+DateRangePicker::make('log_period')
+    ->format('Y-m-d H:i:s') // Stores as "2024-01-15 10:30:00"
+```
 
 #### `minDate(CarbonInterface | string | Closure | null $date)`
-    Sets the earliest selectable date. Dates before this will be disabled in the calendar.
-    ```php
-    DateRangePicker::make('future_event')
-        ->minDate(now()->addDay())
-    ```
-    ![Calendar popover showing past dates and today disabled.](art/form-field-mindate.png)
+
+Sets the earliest selectable date. Dates before this will be disabled in the calendar.
+```php
+DateRangePicker::make('future_event')
+    ->minDate(now()->addDay())
+```
+![Calendar popover showing past dates and today disabled.](art/form-field-mindate.png)
 
 #### `maxDate(CarbonInterface | string | Closure | null $date)`
-    Sets the latest selectable date. Dates after this will be disabled.
-    ```php
-    DateRangePicker::make('past_event')
-        ->maxDate(now()->subDay())
-    ```
-    ![Calendar popover showing future dates and today disabled.](art/form-field-maxdate.png)
+
+Sets the latest selectable date. Dates after this will be disabled.
+```php
+DateRangePicker::make('past_event')
+    ->maxDate(now()->subDay())
+```
+![Calendar popover showing future dates and today disabled.](art/form-field-maxdate.png)
 
 #### `locale(string | Closure | null $locale)`
-    Sets the locale for the calendar (month names, day names) and potentially for parsing/displaying dates if the format string is locale-aware. Defaults to your application's current locale.
-    ```php
-    DateRangePicker::make('période')
-        ->locale('fr')
-    ```
-    ![Calendar popover showing month/day names in French.](art/form-field-locale-fr.png)
+
+Sets the locale for the calendar (month names, day names) and potentially for parsing/displaying dates if the format string is locale-aware. Defaults to your application's current locale.
+```php
+DateRangePicker::make('période')
+    ->locale('fr')
+```
+![Calendar popover showing month/day names in French.](art/form-field-locale-fr.png)
 
 #### `timezone(string | Closure | null $timezone)`
-    Specifies the timezone to be used for interpreting and processing dates. Defaults to your application's timezone (`config('app.timezone')`).
-    ```php
-    DateRangePicker::make('appointment_time')
-        ->timezone('America/New_York')
-    ```
+
+Specifies the timezone to be used for interpreting and processing dates. Defaults to your application's timezone (`config('app.timezone')`).
+```php
+DateRangePicker::make('appointment_time')
+    ->timezone('America/New_York')
+```
 
 #### `firstDayOfWeek(int | Closure $day)`
-    Sets the first day of the week in the calendar view. `0` for Sunday (default), `1` for Monday, ..., `6` for Saturday.
-    ```php
-    DateRangePicker::make('work_schedule')
-        ->firstDayOfWeek(1) // Week starts on Monday
-    ```
-    ![Calendar popover with Monday as the first column.](art/form-field-firstday-monday.png)
+
+Sets the first day of the week in the calendar view. `0` for Sunday (default), `1` for Monday, ..., `6` for Saturday.
+```php
+DateRangePicker::make('work_schedule')
+    ->firstDayOfWeek(1) // Week starts on Monday
+```
+![Calendar popover with Monday as the first column.](art/form-field-firstday-monday.png)
 
 #### `startPlaceholder(string | Closure | null $placeholder)`
-    Sets the placeholder text for the "Start" date input field. Defaults to a localized "Start Date".
-    ```php
-    DateRangePicker::make('travel_dates')
-        ->startPlaceholder('Departure Date')
-    ```
+
+Sets the placeholder text for the "Start" date input field. Defaults to a localized "Start Date".
+```php
+DateRangePicker::make('travel_itenery')
+    ->startPlaceholder('Departure Date')
+```
+
 #### `endPlaceholder(string | Closure | null $placeholder)`
-    Sets the placeholder text for the "End" date input field. Defaults to a localized "End Date".
-    ```php
-    DateRangePicker::make('travel_dates')
-        ->endPlaceholder('Return Date')
-    ```
-    ![Inputs showing "Departure Date" and "Return Date".](art/form-field-placeholders.png)
+
+Sets the placeholder text for the "End" date input field. Defaults to a localized "End Date".
+```php
+DateRangePicker::make('travel_itenery')
+    ->endPlaceholder('Return Date')
+```
+![Inputs showing "Departure Date" and "Return Date".](art/form-field-placeholders.png)
 
 #### `separator(string | Htmlable | Closure $separator)`
-    Customizes the text or HTML displayed between the "Start" and "End" input fields. Defaults to "to".
-    ```php
-    DateRangePicker::make('duration')
-        ->separator('through')
-    ```
+
+Customizes the text or HTML displayed between the "Start" and "End" input fields. Defaults to "to".
+```php
+DateRangePicker::make('duration')
+    ->separator('through')
+```
+
 #### `separatorIcon(string | Closure | null $icon)`
-    A convenience method to use a Filament icon as the separator.
-    ```php
-    DateRangePicker::make('duration')
-        ->separatorIcon('heroicon-o-arrow-long-right')
-    ```
-    ![An arrow icon shown between the "Start" and "End" inputs.](art/form-field-separator-icon.png)
+
+A convenience method to use a Filament icon as the separator.
+```php
+DateRangePicker::make('project_duration')
+    ->separatorIcon('heroicon-o-arrow-long-right')
+```
+![An arrow icon shown between the "Start" and "End" inputs.](art/form-field-separator-icon.png)
 
 #### `autoClose(bool | Closure $condition = true)`
-    If `true` (default), the calendar popover will close immediately after a valid date range (both start and end dates) is selected. If `false`, "Apply" and "Cancel" buttons are shown in the popover, requiring an explicit click to confirm the selection and close.
-    ```php
-    DateRangePicker::make('quick_selection')
-        ->autoClose(true)
-    ```
-    ![Calendar popover with "Apply" and "Cancel" buttons visible.](art/form-field-no-autoclose.png)
+
+If `true` (default), the calendar popover will close immediately after a valid date range (both start and end dates) is selected. If `false`, "Apply" and "Cancel" buttons are shown in the popover, requiring an explicit click to confirm the selection and close.
+```php
+DateRangePicker::make('conference_dates')
+    ->autoClose(true)
+```
+![Calendar popover with "Apply" and "Cancel" buttons visible.](art/form-field-no-autoclose.png)
 
 #### `dualCalendar(bool | Closure $condition = true)`
-    Determines if two calendars (for consecutive months) should be displayed side-by-side in the popover. Defaults to `true` (dual calendars). Set to `false` to display a single calendar.
-    ```php
-    DateRangePicker::make('simple_range_selection')
-        ->dualCalendar(false) // Show only a single month calendar
-    ```
-    ![Calendar popover showing only one month.](art/form-field-single-calendar.png)
+
+Determines if two calendars (for consecutive months) should be displayed side-by-side in the popover. Defaults to `true` (dual calendars). Set to `false` to display a single calendar.
+```php
+DateRangePicker::make('date_range')
+    ->dualCalendar(false) // Show only a single month calendar
+```
+![Calendar popover showing only one month.](art/form-field-single-calendar.png)
 
 #### `readOnly(bool | Closure $condition = true)`
-    Makes the input fields read-only, preventing direct text input (selection via calendar is still possible).
+
+Makes the input fields read-only, preventing direct text input (selection via calendar is still possible).
 
 #### `disabled(bool | Closure $condition = true)`
-    Disables the entire component, preventing any interaction.
+
+Disables the entire component, preventing any interaction.
 
 #### Affixes (Prefixes & Suffixes)
 
@@ -243,7 +260,7 @@ Example:
 ```php
 use Filament\Forms\Components\Actions\Action;
 
-DateRangePicker::make('validity_period')
+DateRangePicker::make('licence_validity')
     ->startPrefix('Valid')
     ->endSuffixAction(
         Action::make('info')
@@ -252,6 +269,7 @@ DateRangePicker::make('validity_period')
             ->action(fn () => null)
     )
 ```
+
 ![The "Start" input with "Valid" as a prefix label, and the "End" input with an info icon suffix action.](art/form-field-affixes.png)
 
 
@@ -305,23 +323,24 @@ DateRangeFilter::make('processed_at')
 The filter, by default, applies a `WHERE column >= start_date AND column <= end_date` condition to your Eloquent query. The `start_date` is taken as the start of the selected day, and `end_date` as the end of the selected day, respecting the configured timezone.
 
 #### `modifyQueryUsing(Closure $callback)`
-    For more complex filtering logic, you can provide a custom query modification callback.
-    ```php
-    DateRangeFilter::make('event_span')
-        ->label('Event Overlaps With')
-        ->modifyQueryUsing(function (Builder $query, array $data, $state) {
-            $start = $state['start'] ? Carbon::parse($state['start'])->startOfDay() : null;
-            $end = $state['end'] ? Carbon::parse($state['end'])->endOfDay() : null;
 
-            if ($start && $end) {
-                return $query->where(function (Builder $query) use ($start, $end) {
-                    $query->where('event_starts_at', '<=', $start)
-                          ->where('event_ends_at', '>=', $end);
-                });
-            }
-            return $query;
-        })
-    ```
+For more complex filtering logic, you can provide a custom query modification callback.
+```php
+DateRangeFilter::make('event_span')
+    ->label('Event Overlaps With')
+    ->modifyQueryUsing(function (Builder $query, array $data, $state) {
+        $start = $state['start'] ? Carbon::parse($state['start'])->startOfDay() : null;
+        $end = $state['end'] ? Carbon::parse($state['end'])->endOfDay() : null;
+
+        if ($start && $end) {
+            return $query->where(function (Builder $query) use ($start, $end) {
+                $query->where('event_starts_at', '<=', $start)
+                        ->where('event_ends_at', '>=', $end);
+            });
+        }
+        return $query;
+    })
+```
 
 ### Filter Indicator
 
@@ -335,9 +354,11 @@ This package is translation-ready. It includes translations for placeholders and
 ar, bs, ca, ckb, cs, cy, da, de, en, es, et, fa, fi, fr, hi, hu, hy, id, it, ja, ka, km, ko, ku, lt, lv, ms, my, nl, no, pl, pt_BR, pt_PT, ro, ru, sk, sl, sv, th, tr, uk, uz, vi, zh_CN, zh_TW.
 
 To publish the translation files to your `lang/vendor/filament-date-range` directory for customization:
+
 ```bash
 php artisan vendor:publish --tag="filament-date-range-translations"
 ```
+
 The component will use the application's current locale by default.
 
 ## Custom Styling
@@ -347,9 +368,11 @@ The component uses a minimal set of custom CSS classes for specific structural e
 All color-related styling (primary colors, text, backgrounds) is designed to inherit directly from your active Filament theme, ensuring visual consistency.
 
 If you need to deeply customize the HTML structure, you can publish the main view:
+
 ```bash
 php artisan vendor:publish --tag="filament-date-range-views"
 ```
+
 This will publish `date-range-picker.blade.php` to `resources/views/vendor/filament-date-range/forms/components/`. **Caution:** Modifying this directly can make updating the package more complex.
 
 ## Contributing
