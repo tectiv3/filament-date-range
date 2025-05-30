@@ -1,0 +1,27 @@
+{
+  "name": "filament-date-range",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:js": "node bin/build.js --dev",
+    "dev:css": "tailwindcss -i ./resources/css/date-range-picker.css -o ./dist/css/date-range-picker.css --postcss --minify",
+    "dev": "npm run dev:js && npm run dev:css --watch",
+    "build:js": "node bin/build.js",
+    "build:css": "tailwindcss -i ./resources/css/date-range-picker.css -o ./dist/css/date-range-picker.css --postcss --minify",
+    "build": "npm run build:js && npm run build:css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
+  }
+}
