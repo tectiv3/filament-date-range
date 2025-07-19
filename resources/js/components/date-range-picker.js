@@ -26,6 +26,7 @@ export default function dateRangePickerFormComponent({
 	isReadOnly = false,
 	isDisabled = false,
 	dualCalendar = true,
+	enabledDates = null,
 }) {
 	const timezone = dayjs.tz.guess();
 
@@ -70,6 +71,7 @@ export default function dateRangePickerFormComponent({
 		isReadOnly,
 		isDisabled,
 		dualCalendar,
+		enabledDates,
 
 		init() {
 			dayjs.locale(locales[locale] ?? locales['en'])
@@ -427,6 +429,13 @@ export default function dateRangePickerFormComponent({
 		isDayDisabledInternal(dateAsDayjs) {
 			if (this.minDate && dateAsDayjs.isBefore(this.minDate, "day")) return true;
 			if (this.maxDate && dateAsDayjs.isAfter(this.maxDate, "day")) return true;
+			
+			// If enabledDates is provided, only those dates are allowed
+			if (this.enabledDates && Array.isArray(this.enabledDates)) {
+				const dateString = dateAsDayjs.format('YYYY-MM-DD');
+				return !this.enabledDates.includes(dateString);
+			}
+			
 			return false;
 		},
 
